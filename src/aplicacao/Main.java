@@ -1,9 +1,5 @@
 package aplicacao;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
 import implementacao.Pilha;
@@ -18,31 +14,38 @@ public class Main {
 
 		int loopAplicacao = 1;
 
+		System.out.println("Navegue pelo Menu em busca de adicionar/remover/listar elementos na Pilha.\n");
+
 		while (loopAplicacao != 0) {
-			System.out.println("1 - Listar Pilha");
-			System.out.println("2 - Empilhar");
-			System.out.println("3 - Desempilhar");
-			System.out.println("4 - Verificar Topo");
-			System.out.println("5 - Vazia");
-			System.out.println("6 - Cheia");
-			System.out.println("7 - Listar Insertion Sort");
-			System.out.println("8 - Listar Selection Sort");
-			System.out.println("0 - SAIR");
+			System.out.println("\n-=-=-=-=-=-=-=-=-=-= NAVIO DAS AMERICAS -=-=-=-=-=-=-=-=-=-=");
+			System.out.println("------------------------------------------------------------\n");
+			System.out.println("[1] - Listar Pilha          [2] - Empilhar ");
+			System.out.println("[3] - Desempilhar           [4] - Verificar Topo ");
+			System.out.println("[5] - Verificar Pilha Vazia [6] - Verificar Pilha Cheia ");
+			System.out.println("[0] - SAIR \n");
+			System.out.println("[ ] - Listas Ordenadas: ");
+			System.out.println("[7] - Bubble Sort ");
+			System.out.println("[8] - Lista Ordenada Insertion Sort ");
+			System.out.println("[9] - Lista Ordenada Selection Sort ");
+			System.out.print("\nPor favor informa uma Opção presente no Menu acima: ");
 			int opcaoMenu = teclado.nextInt();
 			switch (opcaoMenu) {
 			case 1:
-				navio.listar();
+				if(navio.vazio() == true) {
+					System.out.println("\nNão há Contêiner(s) no Navio!\n");
+				}else {
+					navio.listar();
+				}
 				break;
 			case 2:
-				System.out.println(navio.push(55));// Brasil
-				System.out.println(navio.push(54));// Argentina
-				System.out.println(navio.push(56));// Chile
-				System.out.println(navio.push(57));// Colômbia
-				System.out.println(navio.push(598));// Uruguai
-				System.out.println(navio.push(595));// Paraguai
-				System.out.println(navio.push(51));// Peru
-				System.out.println(navio.push(591));// Bolivia
-				System.out.println(navio.push(593));// Equador
+				int opcaoEmpilhar = 1;
+				while (opcaoEmpilhar != 0) {
+					System.out.print("\nInforme o nome do País de origem do Contêiner que será empilhado no Navio: ");
+					System.out.println(navio.push(teclado.next().toUpperCase()));
+					System.out.print("\nDeseja Empilhar outro Contêiner (1 - SIM / 0 - NÃO): ");
+					opcaoEmpilhar = teclado.nextInt();
+					System.out.println();
+				}
 				break;
 			case 3:
 				System.out.println(navio.pop());
@@ -51,23 +54,34 @@ public class Main {
 				System.out.println(navio.top());
 				break;
 			case 5:
-				System.out.println(navio.vazio());
+				if (navio.vazio()) {
+					System.out.println("\nNão há Contêiner(s) no Navio!\n");
+				} else {
+					System.out.println("\nHá Contêiner(s) no Navio!\n");
+				}
 				break;
 			case 6:
-				System.out.println(navio.cheio());
+				if (navio.cheio()) {
+					System.out.println("\nNavio lotado de Conteiners!\n");
+				} else {
+					System.out.println("\nAinda há vagas para Conteiners no Navio!\n");
+				}
 				break;
 			case 7:
-				navio.listarInsertion();
+				navio.listarBubbleSort();
 				break;
 			case 8:
+				navio.listarInsertion();
+				break;
+			case 9:
 				navio.listarSelection();
 				break;
 			case 0:
-				System.out.println("Sistema Encerrado!");
+				System.out.println("\nSistema Encerrado!");
 				loopAplicacao = 0;
 				break;
 			default:
-				System.out.println("Valor Inválido.");
+				System.out.println("\nValor Inválido.");
 				break;
 			}
 
