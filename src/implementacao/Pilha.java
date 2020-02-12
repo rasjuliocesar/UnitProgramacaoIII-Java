@@ -6,7 +6,11 @@ public class Pilha {
 	final int TAMANHO = 8;
 
 	String[] americaSul = new String[TAMANHO];
-	
+
+	public int getTopo() {
+		return this.topo;
+	}
+
 	public boolean vazio() {
 		if (topo == -1) {
 			return true;
@@ -54,9 +58,7 @@ public class Pilha {
 	}
 
 	public void listar() {
-		
-		System.out.println("\nLista de Cotêinerers no Navio América do Sul: \n");
-		
+
 		for (int i = TAMANHO - 1; i >= 0; i--) {
 			if (americaSul[i] != null) {
 				System.out.println("|" + americaSul[i] + "|");
@@ -91,7 +93,7 @@ public class Pilha {
 
 	public void listarInsertion() {
 		String[] listar = americaSul.clone();
-		
+
 		for (int i = 1; i < americaSul.length; i++) {
 
 			int j = i - 1;
